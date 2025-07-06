@@ -26,5 +26,5 @@ export const GET: RequestHandler = async ({ params, cookies, platform }) => {
 
   setSessionToCookies(cookies, deleted.userUlid);
 
-  return redirect(302, "/");
+  return redirect(302, "/dashboard");
 };

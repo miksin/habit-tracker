@@ -11,4 +11,4 @@
   });
 </script>
 
-<a class="btn" href="/auth/init">初次使用</a>
+<a class="btn mx-auto my-auto btn-lg btn-primary" href="/auth/init">初次使用</a>

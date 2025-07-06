@@ -22,19 +22,24 @@
     if (response.ok) {
       const { token } = await response.json();
       loginLink = `${window.location.origin}/api/auth/link/${token}`;
+      navigator.clipboard.writeText(loginLink);
     } else {
       console.error("Failed to create login link");
     }
   };
 </script>
 
-<button class="btn" onclick={getLoginToken} disabled={!!loginLink || submitted}
-  >產生登入連結</button
->
+<div class="flex flex-col gap-4">
+  <button
+    class="btn btn-lg btn-primary"
+    onclick={getLoginToken}
+    disabled={!!loginLink || submitted}>產生登入連結</button
+  >
 
-{#if loginLink}
-  <div class="flex flex-col">
-    <p>請使用以下連結登入：</p>
-    <p class="text-2xl">{loginLink}</p>
-  </div>
-{/if}
+  {#if loginLink}
+    <div class="flex flex-col gap-4">
+      <p>請於24小時內使用以下連結登入：</p>
+      <p>{loginLink}</p>
+    </div>
+  {/if}
+</div>
