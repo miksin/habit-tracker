@@ -1,5 +1,11 @@
 name = "habit-tracker"
-compatibility_date = "YYYY-MM-DD"
+main = ".svelte-kit/cloudflare/_worker.js"
+compatibility_flags = [ "nodejs_compat" ]
+compatibility_date = "2025-07-06"
+
+[assets]
+binding = "ASSETS"
+directory = ".svelte-kit/cloudflare"
 
 # Workers Logs
 # Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
@@ -10,4 +16,4 @@ enabled = true
 [[d1_databases]]
 binding = "DB"
 database_name = "habit_tracker_db"
-database_id = "{DATABASE_ID}"
+database_id = "1b8ad210-957e-41e0-8a5f-67414ea25478"
