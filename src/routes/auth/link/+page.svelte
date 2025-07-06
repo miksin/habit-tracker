@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import type { PageProps } from "./$types";
+  import { Turnstile } from "svelte-turnstile";
 
   let { data }: PageProps = $props();
 
@@ -11,12 +12,23 @@
   });
 
   let submitted = $state(false);
+  let turnstileToken = $state<string | null>(null);
   let loginLink = $state<string | null>(null);
 
   const getLoginToken = async () => {
+    if (!turnstileToken) {
+      console.error("Turnstile token is required");
+      return;
+    }
     submitted = true;
     const response = await fetch("/api/auth/link", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        turnstileToken,
+      }),
     });
 
     if (response.ok) {
@@ -30,10 +42,16 @@
 </script>
 
 <div class="flex flex-col gap-4">
+  <Turnstile
+    siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
+    on:callback={(e) => (turnstileToken = e.detail.token)}
+    size="flexible"
+  />
+
   <button
     class="btn btn-lg btn-primary"
     onclick={getLoginToken}
-    disabled={!!loginLink || submitted}>產生登入連結</button
+    disabled={!!loginLink || !turnstileToken || submitted}>產生登入連結</button
   >
 
   {#if loginLink}

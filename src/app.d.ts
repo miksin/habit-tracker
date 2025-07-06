@@ -11,6 +11,7 @@ declare global {
     interface Platform {
       env: {
         DB: D1Database;
+        TURNSTILE_SECRET: string;
       };
     }
   }
