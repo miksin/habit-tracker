@@ -1,3 +1,4 @@
+import * as schema from "./schema";
 import { drizzle } from "drizzle-orm/d1";
 
 export const getDB = (platform?: App.Platform) => {
@@ -5,5 +6,5 @@ export const getDB = (platform?: App.Platform) => {
   if (!db) {
     throw new Error("Database not found in platform environment");
   }
-  return drizzle(db);
+  return drizzle(db, { schema });
 };
