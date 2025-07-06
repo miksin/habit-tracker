@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import type { PageProps } from "./$types";
   import { Turnstile } from "svelte-turnstile";
+  import { qr } from "@svelte-put/qr/svg";
 
   let { data }: PageProps = $props();
 
@@ -58,6 +59,13 @@
     <div class="flex flex-col gap-4">
       <p>請於24小時內使用以下連結登入：</p>
       <p>{loginLink}</p>
+      <svg
+        use:qr={{
+          data: loginLink,
+          logo: "/icon.svg",
+          shape: "square",
+        }}
+      />
     </div>
   {/if}
 </div>
