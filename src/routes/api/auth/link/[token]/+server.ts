@@ -1,7 +1,7 @@
 import { setSessionToCookies } from "$lib/cookies";
 import { getDB } from "$lib/server/db/client";
 import { loginTokens } from "$lib/server/db/schema";
-import { type RequestHandler } from "@sveltejs/kit";
+import { redirect, type RequestHandler } from "@sveltejs/kit";
 import { eq } from "drizzle-orm";
 
 export const GET: RequestHandler = async ({ params, cookies, platform }) => {
@@ -26,5 +26,5 @@ export const GET: RequestHandler = async ({ params, cookies, platform }) => {
 
   setSessionToCookies(cookies, deleted.userUlid);
 
-  return new Response("ok", { status: 200 });
+  return redirect(302, "/");
 };

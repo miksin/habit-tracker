@@ -5,10 +5,10 @@
   let { data }: PageProps = $props();
 
   onMount(() => {
-    if (data.session) {
-      window.location.href = "/dashboard";
+    if (!data.session) {
+      window.location.href = "/";
     }
   });
 </script>
 
-<a class="btn" href="/auth/init">初次使用</a>
+<p>Dashboard</p>
