@@ -17,3 +17,7 @@ enabled = true
 binding = "DB"
 database_name = "habit_tracker_db"
 database_id = "1b8ad210-957e-41e0-8a5f-67414ea25478"
+
+[vars]
+VITE_TURNSTILE_SITE_KEY = "0x4AAAAAABj75sMuJAvjJ6OY"
+NODE_VERSION = "20.16.0"
