@@ -1,0 +1,13 @@
+name = "habit-tracker"
+compatibility_date = "YYYY-MM-DD"
+
+# Workers Logs
+# Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
+# Configuration: https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "habit_tracker_db"
+database_id = "{DATABASE_ID}"

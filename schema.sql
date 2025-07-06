@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS login_tokens;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  ulid VARCHAR(26) NOT NULL,
+  PRIMARY KEY (ulid)
+);
+
+CREATE TABLE login_tokens (
+  userUlid    VARCHAR(26) NOT NULL,
+  token       VARCHAR(128) NOT NULL,
+  expiredAt   DATETIME NOT NULL,
+  FOREIGN KEY (userUlid) REFERENCES users(ulid) ON UPDATE CASCADE ON DELETE CASCADE,
+  PRIMARY KEY (token)
+);

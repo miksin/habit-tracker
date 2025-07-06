@@ -43,7 +43,7 @@
     "wrangler": "^4.23.0"
   },
   "dependencies": {
-    "@libsql/client": "^0.14.0",
-    "drizzle-orm": "^0.40.0"
+    "drizzle-orm": "^0.40.0",
+    "ulid": "^3.0.1"
   }
 }
